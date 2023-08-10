@@ -1,15 +1,21 @@
 import React from 'react';
-import MyComponent from './Components/Data/node';
 import 'bootstrap/dist/css/bootstrap.css';
-import MyTreeNode from './Components/TreeNode/tree-node';
-import TheApp from './Components/exemplu2/treeExample';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import TreeApp from './Components/exemplu2/treeExample';
+import { Tree } from 'react-organizational-chart';
+import Aside from './Components/exemplu2/Aside';
+
 
 
 function App() {
 
   return (
    <>
-      <TheApp />
+      <DndProvider backend={HTML5Backend}>
+        <Aside />
+        <TreeApp/>
+			</DndProvider>
    </>
   );
 }
