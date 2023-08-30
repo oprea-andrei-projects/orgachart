@@ -2,7 +2,6 @@ import React from "react";
 import { Tree, TreeNode } from 'react-organizational-chart';
 import styled from 'styled-components';
 import { useDrag } from 'react-dnd';
-
 import { useDrop } from 'react-dnd';
 import { CardProps } from "./card";
 
@@ -31,19 +30,33 @@ const RecursiveComponent: React.FC<RecursiveComponentProps> = ({ id, name, child
     collect: (monitor) => ({
         isOver: !!monitor.isOver(),
     })
-})) 
+  })) 
+
+
+  const [{isDragging}, drag] = useDrag(()=>({
+    type:"card",
+    item: {id:id},
+    collect:(monitor) =>({
+
+        isDragging: !!monitor.isDragging(),
+    }),
+
+  }));
    
-const addCardToArr = (item: RecursiveComponentProps)=>{
+    const addCardToArr = (item: RecursiveComponentProps)=>{
 
      children?.push(item);
-}
+    }
    
     return (
     
       <>
       
       <TreeNode
-        label={ <div ref = {drop} >
+        label={ <div  ref={node => {
+          drag(drop(node));}}
+        
+        >
             ID: {id} | Name: {name}
             </div>}
            

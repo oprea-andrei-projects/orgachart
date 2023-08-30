@@ -2,7 +2,7 @@ import React from 'react';
 import RecursiveComponent, { RecursiveComponentProps } from './recursiveComp';
 import { Tree, TreeNode } from 'react-organizational-chart';
 import styled from 'styled-components';
-
+import { useDrop } from 'react-dnd';
 const TheApp: React.FC = () => {
 
   const StyledNode = styled.div`
@@ -43,7 +43,7 @@ const TheApp: React.FC = () => {
 
     <Tree
     label={<StyledNode>Recursive Component Example</StyledNode>}
-    >
+   >
        
         <RecursiveComponent {...data} />
     </Tree>

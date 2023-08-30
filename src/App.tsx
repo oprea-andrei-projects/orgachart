@@ -8,10 +8,12 @@ import Aside from './Components/exemplu2/Aside';
 
 
 
+
 function App() {
 
   return (
    <>
+   
       <DndProvider backend={HTML5Backend}>
         <Aside />
         <TreeApp/>
